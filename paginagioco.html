@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Wikipedia Race</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&family=Zen+Dots&display=swap');
+        html, body {
+            font-family: Inter;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 90%;
+            
+        }
+        
+        iframe {
+            margin-top: 100px;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .all {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+            background-color: #faedcd;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .timer {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            gap: 3px;
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .paginaattuale {
+            font-size: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .paginaattuale p {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .paginaattuale h1 {
+            font-size: 30px;
+        }
+
+        #checkVictory {
+            font-size: 24px;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 10px;
+            border: none;
+            background-color: orange;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+        #checkVictory:hover {
+            background-color: rgba(255, 166, 0, 0.774);
+        }
+        #checkVictory:active {
+            background-color: rgba(180, 117, 0, 0.774);
+        }
+
+    </style>
+</head>
+<body>
+    <iframe id="wikipediaFrame"></iframe>
+    <div class="all">
+        <div class="timer">
+            <p id="minuti"></p>
+            <p>:</p>
+            <p id="secondi"></p>
+        </div>
+        <div class="paginaattuale">
+            <p>Da:</p>
+            <h1 id="paginaInizio"></h1>
+            <p></p>
+            <p>A:</p>
+            <h1 id="paginaDestinazione"></h1>
+        </div>
+        <div class="button">
+            <button id="checkVictory">Ho raggiunto la pagina finale!</button>
+        </div>
+    </div>
+    <script>
+       
+        const urlParams = new URLSearchParams(window.location.search);
+        const link = urlParams.get("link");
+        if(link) {
+            document.getElementById("wikipediaFrame").src = link;
+        } else {
+            document.body.innerHTML = "<p>Nessun link passato alla pagina.</p>";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let secondiVal = 0;
+            let minutiVal = 0;
+
+            setInterval(() => {
+                secondiVal++;
+
+                if (secondiVal > 59) {
+                    secondiVal = 0;
+                    minutiVal++;
+                }
+
+                document.getElementById("secondi").textContent = secondiVal.toString().padStart(2, '0');
+                document.getElementById("minuti").textContent = minutiVal.toString().padStart(2, '0');
+
+                }, 1000);
+            });
+
+            let Primorecuperato = localStorage.getItem("ArticoloUno");
+            let Ultimorecuperato = localStorage.getItem("ArticoloUltimo");
+
+            const inizio = document.getElementById("paginaInizio");
+            const fine = document.getElementById("paginaDestinazione");
+            inizio.innerHTML = Primorecuperato;
+            fine.innerHTML = Ultimorecuperato;
+
+            let LinkUltimo = localStorage.getItem("fineLink");
+            const iframe = document.getElementById("wikipediaFrame");
+
+            document.getElementById("checkVictory").addEventListener("click", () => {
+    const paginaFinale = localStorage.getItem("ArticoloUltimo");
+    const iframe = document.getElementById("wikipediaFrame");
+    try {
+        // Proviamo a leggere il titolo della pagina caricata nell'iframe (se possibile)
+        const titoloIframe = iframe.contentDocument.title || "";
+        if (titoloIframe.toLowerCase().includes(paginaFinale.toLowerCase())) {
+            alert("Complimenti! Hai vinto la partita!");
+            window.location.href = "vittoria.html";
+        } else {
+            alert("Questa non è la pagina finale. Continua a cercare!");
+        }
+    } catch (e) {
+        // Se non puoi accedere al titolo (cross-origin), chiedi conferma all’utente
+        const conferma = confirm("Sei sicuro di aver raggiunto la destinazione?");
+        if (conferma) {
+            alert("Complimenti! Hai vinto la partita!");
+            window.location.href = "vittoria.html";
+        }
+    }
+});
+
+    </script>
+</body>
+</html>

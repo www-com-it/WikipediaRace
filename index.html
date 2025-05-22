@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Race</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-rXQ+...snipped...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+    <div class="logo">
+        <div class="img-logo">
+            <a href="index.html">
+                <img title="Wikipedia Race" src="logo.png" width="150px" height="150px">
+            </a>
+            <h1>Wikipedia Race!</h1>
+        </div>
+        <div class="p-logo">
+            <p>Riuscirai ad arrivare a destinazione?</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="inizio">
+            <div class="input">
+                <p>Pagina iniziale:</p>
+                <input autocomplete="off" id="input-iniziale" type="text">
+                <div id="suggestions-inizio" class="suggestions"></div>
+            </div>
+            <i onclick="generaInizio()" title="Articolo casuale" id="dice" class="fa-solid fa-dice"></i>
+        </div>
+
+        <div class="destinazione">
+            <div class="input">
+                <p>Pagina finale:</p>
+                <input autocomplete="off" id="input-finale" type="text">
+            </div>
+            <i onclick="generaFine()" title="Articolo casuale" id="dice" class="fa-solid fa-dice"></i>
+            <div id="suggestions-fine" class="suggestions"></div>
+        </div>
+
+        <div class="button">
+            <button onclick="start()">INIZIA LA PARTITA!</button>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body> 
+</html>

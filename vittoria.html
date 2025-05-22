@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Race</title>
+</head>
+<style>
+    body {
+        background-color: black;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    h1 {
+        color: white;
+        font-size: 50px;
+    }
+
+    button {
+        height: 50px;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        transition: all 0.15s ease;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: rgba(196, 196, 196, 0.651);
+    }
+    button:active {
+        background-color: rgba(160, 160, 160, 0.623);
+    }
+</style>
+<body>
+
+    <h1>COMPLIMENTI, HAI VINTO!</h1>
+    <button onclick="back()">TORNA ALLA HOME</button>
+    
+    <script>
+        function back() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

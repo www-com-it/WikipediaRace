@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&family=Zen+Dots&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Inter;
+}
+
+body {
+    background-color: #faedcd;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ! LOGO */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    width: 600px;
+    padding: 20px 0 20px 0;
+    gap: 20px;
+}
+
+.img-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-logo img {
+    width: 190px;
+    height: 110px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.img-logo h1 {
+    font-size: 45px;
+    user-select: none;
+}
+
+.p-logo {
+    width: 600px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+}
+
+/* ! CONTAINER */
+.container {
+    margin-top: 50px;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #ffd4aa;
+    border-radius: 10px;
+}
+
+.inizio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    position: relative;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.input p {
+    font-size: 25px;
+    font-weight: 700;
+    user-select: none;
+}
+
+.input input {
+    height: 50px;
+    width: 75%;
+    border-radius: 10px;
+    border: none;
+    padding: 0 0 0 5px;
+    font-size: 20px;
+}
+
+#dice {
+    position: absolute;
+    bottom: 14%;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+#dice:active {
+    transform: scale(0.95);
+}
+
+.destinazione {
+    user-select: none;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    position: relative;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.button button {
+    width: 60%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    background-color: white;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.button button:hover {
+    background-color: rgba(196, 196, 196, 0.651);
+}
+
+.button button:active {
+    background-color: rgba(160, 160, 160, 0.623);
+}
+
+.suggestions {
+    background: white;
+    border: 1px solid #ccc;
+    position: absolute;
+    bottom: -150px;
+    width: 75%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+}
+.suggestions p {
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+}
+.suggestions p:hover {
+    background: #eee;
+}
